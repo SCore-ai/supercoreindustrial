@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "pnpm -r dev",
     "build": "pnpm -r build",
+    "vercel-build": "turbo run build --filter=@dtc/storefront",
     "start": "turbo start",
     "lint": "turbo lint",
     "test": "turbo test",
