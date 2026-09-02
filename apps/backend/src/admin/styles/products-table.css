@@ -1,0 +1,8 @@
+/**
+ * Fallback widths if JS has not labeled columns yet.
+ * Real widths are applied by products-table-column-layout.tsx via header text.
+ */
+body.sci-products-list table {
+  table-layout: fixed;
+  width: 100%;
+}

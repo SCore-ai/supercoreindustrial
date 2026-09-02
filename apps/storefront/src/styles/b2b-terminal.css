@@ -1,0 +1,246 @@
+.sc-b2b-page {
+  background: var(--sc-paper);
+}
+
+.sc-b2b-hero {
+  margin-bottom: 2rem;
+}
+
+.sc-b2b-hero h1 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: var(--sc-body);
+  letter-spacing: -0.02em;
+}
+
+.sc-b2b-hero p {
+  margin-top: 0.75rem;
+  max-width: 52rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.sc-b2b-card {
+  background: #fff;
+  border: 1px solid var(--sc-line);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px rgba(10, 10, 10, 0.04);
+}
+
+.sc-b2b-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 3px solid var(--sc-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sc-body);
+}
+
+.sc-b2b-card-body {
+  padding: 1.25rem;
+}
+
+.sc-b2b-section-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sc-body);
+  margin-bottom: 1rem;
+}
+
+.sc-b2b-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 0.35rem;
+}
+
+.sc-b2b-input,
+.sc-b2b-textarea {
+  width: 100%;
+  border: 1px solid var(--sc-line);
+  border-radius: 0.375rem;
+  background: #fff;
+  color: var(--sc-body);
+  font-size: 0.95rem;
+}
+
+.sc-b2b-input {
+  height: 2.75rem;
+  padding: 0 0.75rem;
+}
+
+.sc-b2b-textarea {
+  padding: 0.75rem;
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.sc-b2b-input:focus,
+.sc-b2b-textarea:focus {
+  outline: 2px solid rgba(255, 183, 0, 0.35);
+  border-color: var(--sc-accent);
+}
+
+.sc-b2b-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sc-b2b-table th {
+  text-align: left;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748b;
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid var(--sc-line);
+}
+
+.sc-b2b-table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid #eef2f6;
+  vertical-align: middle;
+}
+
+.sc-b2b-status {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.sc-b2b-status.is-found {
+  color: var(--sc-body);
+  font-style: normal;
+}
+
+.sc-b2b-status.is-error {
+  color: #b45309;
+  font-style: normal;
+}
+
+.sc-b2b-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--sc-accent);
+  color: var(--sc-body);
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.25rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.sc-b2b-btn-primary:hover:not(:disabled) {
+  background: var(--sc-accent-dark);
+}
+
+.sc-b2b-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.sc-b2b-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: var(--sc-body);
+  border: 1px solid var(--sc-line);
+  border-radius: 0.375rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+}
+
+.sc-b2b-btn-dark {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background: var(--sc-body);
+  color: var(--sc-accent);
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+}
+
+.sc-b2b-btn-dark:hover:not(:disabled) {
+  background: #171717;
+}
+
+.sc-b2b-upload-zone {
+  border: 2px dashed var(--sc-line);
+  border-radius: 0.5rem;
+  padding: 2rem 1.25rem;
+  text-align: center;
+  background: #fafbfc;
+}
+
+.sc-b2b-upload-zone p {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.sc-b2b-policies {
+  background: #fff;
+  border: 1px solid var(--sc-line);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+}
+
+.sc-b2b-policies h4 {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.sc-b2b-policies li {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.sc-b2b-policies li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-top: 0.45rem;
+  background: var(--sc-accent);
+}
+
+.sc-b2b-example {
+  background: #f1f5f9;
+  border-radius: 0.375rem;
+  padding: 0.75rem;
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+  color: #475569;
+  margin: 0.75rem 0 1rem;
+  white-space: pre-line;
+}

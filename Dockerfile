@@ -1,0 +1,20 @@
+FROM node:22.14.0-alpine
+
+WORKDIR /server
+
+# Keep Docker aligned with the repository's packageManager declaration.
+RUN corepack enable && corepack prepare pnpm@11.20.0 --activate
+
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json .npmrc ./
+COPY apps/backend/package.json ./apps/backend/
+COPY apps/storefront/package.json ./apps/storefront/
+
+RUN pnpm install --frozen-lockfile
+
+COPY . .
+
+RUN chmod +x ./start.sh ./start-storefront.sh
+
+EXPOSE 9000 5173 8000
+
+ENTRYPOINT ["./start.sh"]

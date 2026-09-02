@@ -1,0 +1,26 @@
+packages:
+  - "apps/**"
+  - "!apps/backend/.medusa/**"
+
+# pnpm v11+: settings live here (package.json "pnpm" / legacy onlyBuiltDependencies ignored)
+autoInstallPeers: true
+
+overrides:
+  "@types/react": "19.0.5"
+  "@types/react-dom": "19.0.5"
+  # Pin away from a lockfile entry that trips the default 24h minimumReleaseAge
+  baseline-browser-mapping: "2.9.6"
+
+# Lockfile revalidation runs before overrides rewrite; exclude until pin is applied
+minimumReleaseAgeExclude:
+  - baseline-browser-mapping
+
+# pnpm 11: allowBuilds replaces onlyBuiltDependencies
+allowBuilds:
+  "@medusajs/telemetry": true
+  "@swc/core": true
+  esbuild: true
+  msgpackr-extract: true
+  protobufjs: true
+  sharp: true
+  unrs-resolver: true

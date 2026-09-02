@@ -1,0 +1,132 @@
+services:
+  postgres:
+    build:
+      context: ./infra/postgres
+    image: supercore-postgres-ssl:15
+    container_name: supercore_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: medusa-store
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d medusa-store"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - supercore_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: supercore_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      - supercore_network
+
+  typesense:
+    image: typesense/typesense:27.1
+    container_name: supercore_typesense
+    restart: unless-stopped
+    ports:
+      - "8108:8108"
+    environment:
+      TYPESENSE_DATA_DIR: /data
+      TYPESENSE_API_KEY: supercore_typesense_dev_key
+      TYPESENSE_ENABLE_CORS: "true"
+    volumes:
+      - typesense_data:/data
+    command: ["--data-dir", "/data", "--api-key", "supercore_typesense_dev_key", "--enable-cors"]
+    networks:
+      - supercore_network
+
+  medusa:
+    build: .
+    container_name: supercore_backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "9000:9000"
+      - "5173:5173"
+    environment:
+      NODE_ENV: development
+      # Set true after adding DB migrations; false speeds up routine restarts
+      RUN_MIGRATE_ON_START: "false"
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/medusa-store?uselibpqcompat=true&sslmode=require
+      DATABASE_SSLMODE: require
+      REDIS_URL: redis://redis:6379
+      TYPESENSE_HOST: typesense
+      TYPESENSE_PORT: "8108"
+      TYPESENSE_PROTOCOL: http
+      TYPESENSE_API_KEY: supercore_typesense_dev_key
+    env_file:
+      - apps/backend/.env
+    volumes:
+      - .:/server
+      - /server/node_modules
+      - /server/apps/backend/node_modules
+      - /server/apps/storefront/node_modules
+    networks:
+      - supercore_network
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "node -e \"require('http').get('http://127.0.0.1:9000/health',(r)=>{process.exit(r.statusCode===200?0:1)}).on('error',()=>process.exit(1))\"",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 120s
+
+  storefront:
+    build: .
+    container_name: supercore_storefront
+    restart: unless-stopped
+    depends_on:
+      medusa:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    environment:
+      NODE_ENV: development
+      # Browser-facing URL (host machine)
+      NEXT_PUBLIC_MEDUSA_BACKEND_URL: http://localhost:9000
+      # Server-side URL inside Docker network
+      MEDUSA_BACKEND_URL: http://medusa:9000
+      NEXT_PUBLIC_BASE_URL: http://localhost:8000
+      NEXT_PUBLIC_DEFAULT_REGION: gb
+    env_file:
+      - apps/storefront/.env
+    volumes:
+      - .:/server
+      - /server/node_modules
+      - /server/apps/backend/node_modules
+      - /server/apps/storefront/node_modules
+      - /server/apps/storefront/.next
+    entrypoint: ["./start-storefront.sh"]
+    networks:
+      - supercore_network
+
+volumes:
+  postgres_data:
+  typesense_data:
+
+networks:
+  supercore_network:
+    driver: bridge

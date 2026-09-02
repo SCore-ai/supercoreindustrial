@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "skills": {
+    "building-admin-dashboard-customizations": {
+      "source": "medusajs/medusa-agent-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/medusa-dev/skills/building-admin-dashboard-customizations/SKILL.md",
+      "computedHash": "1d28d196d3a3c88e90fd6aac2957c24a130b43cff631d622278496987851166d"
+    },
+    "building-storefronts": {
+      "source": "medusajs/medusa-agent-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/medusa-dev/skills/building-storefronts/SKILL.md",
+      "computedHash": "cdd94d4637a988d7e708ef9df9109b308d0e8cfe8fb602565301d045102bca43"
+    },
+    "building-with-medusa": {
+      "source": "medusajs/medusa-agent-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/medusa-dev/skills/building-with-medusa/SKILL.md",
+      "computedHash": "c4999cda1afc5453fdb39f93e7fe96f532266e7565d6f0715949d04152ee2cdd"
+    },
+    "creating-agents-in-medusa": {
+      "source": "medusajs/medusa-agent-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/medusa-dev/skills/creating-internal-agents/SKILL.md",
+      "computedHash": "9aa603e7d085c17094c23fadeefb10b461412f29c573cadf390792aa046d7f15"
+    },
+    "db-generate": {
+      "source": "medusajs/medusa-agent-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/medusa-dev/skills/db-generate/SKILL.md",
+      "computedHash": "ada2c0bdf020055310086c2697ca492a5d189c8e17d2793d8cb1134a609baaf4"
+    },
+    "db-migrate": {
+      "source": "medusajs/medusa-agent-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/medusa-dev/skills/db-migrate/SKILL.md",
+      "computedHash": "0a6bf470a5313ead6b31440349404ee6a96086427602bd499a6fef846f49ae6c"
+    },
+    "new-user": {
+      "source": "medusajs/medusa-agent-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/medusa-dev/skills/new-user/SKILL.md",
+      "computedHash": "9df255145bc978dd21390c725ee372d82126fc08416c67fb1d278457a93253a1"
+    }
+  }
+}
